@@ -112,7 +112,7 @@ def batsmanAPI(batsman, balls=balls):
 
     df = balls[balls.innings.isin([1, 2])]  # Excluding Super overs
     self_record = batsmanRecord(batsman, df=df)
-    TEAMS = balls[balls['batsman']==batsman].BowlingTeam.unique()
+    TEAMS = balls[balls['batter']==batsman].BowlingTeam.unique()
 
     against = {team: batsmanVsTeam(batsman, team, df) for team in TEAMS}
     data = {
