@@ -1,9 +1,9 @@
 from flask import Flask, request, jsonify
 from flask.json import JSONEncoder
 
-from util import *
-import json
-import pandas as pd
+from util import teamAPI, batsmanAPI, bowlerAPI
+
+
 import numpy as np
 
 
@@ -45,4 +45,5 @@ def bowler_record():
     return jsonify(bowlerAPI(bowler))
 
 
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=False, host='0.0.0.0', port=4444)
