@@ -112,7 +112,8 @@ def batsmanAPI(batsman, balls=balls):
 
     df = balls[balls.innings.isin([1, 2])]  # Excluding Super overs
     self_record = batsmanRecord(batsman, df=df)
-    TEAMS = matches.Team1.unique()
+    TEAMS = balls[balls['batsman']==batsman].BowlingTeam.unique()
+
     against = {team: batsmanVsTeam(batsman, team, df) for team in TEAMS}
     data = {
         batsman: {'all': self_record,
@@ -185,7 +186,8 @@ def bowlerAPI(bowler, balls=balls):
 
     df = balls[balls.innings.isin([1, 2])]  # Excluding Super overs
     self_record = bowlerRecord(bowler, df=df)
-    TEAMS = matches.Team1.unique()
+    TEAMS = balls[balls['bowler']==bowler].BattingTeam.unique()
+
     against = {team: bowlerVsTeam(bowler, team, df) for team in TEAMS}
     data = {
         bowler: {'all': self_record,
